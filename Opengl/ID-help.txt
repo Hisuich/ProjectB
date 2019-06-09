@@ -1,0 +1,20 @@
+XXSMMLLPYY
+XXX - Type of Object
+S - Solid or not Solid. Always 0 - if not solid and 1 if solid.
+MM - Condition of mind
+LL - Level
+YYY - directly the object
+
+XXX:
+100 - floor
+101 - wall
+
+S:
+0 - not solid
+1-9 - solid
+
+MM:
+
+LL:
+00 - hall
+
