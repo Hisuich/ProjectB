@@ -99,6 +99,7 @@
     <None Include="glew32.dll" />
     <None Include="glut32.dll" />
     <None Include="Resources\Maps\lvl1_bigroom_1.map" />
+    <None Include="Resources\Maps\lvl1_corridor_1.map" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Opengl.vcxproj.xml" />
