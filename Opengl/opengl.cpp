@@ -58,7 +58,7 @@ int main (int argc, char** argv)
 	glutCreateWindow("MAZAFAKA NIGGA");
 	g_glRender->SetupProject(windowWidth, windowHeight);
 
-	glutSetKeyRepeat(1);
+	glutIgnoreKeyRepeat(1);
 	glutKeyboardFunc(KeyboardFunction);
 	glutKeyboardUpFunc(KeyboardFunctionRelease);
 

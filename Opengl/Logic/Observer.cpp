@@ -16,3 +16,8 @@ void Observer::update(float dt)
 {
 
 }
+
+void Observer::setObject(GameObject* object)
+{
+	this->obj = object;
+}

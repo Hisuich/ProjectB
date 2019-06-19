@@ -18,4 +18,7 @@ public:
 	Observer(GameObject* obj);
 
 	virtual void update(float dt);
+
+	void setObject(GameObject* object);
+
 };

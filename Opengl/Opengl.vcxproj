@@ -129,7 +129,7 @@
     <ClCompile Include="Logic\DialogCommand.cpp" />
     <ClCompile Include="Logic\EventProcessor.cpp" />
     <ClCompile Include="Logic\InteractCommand.cpp" />
-    <ClCompile Include="Logic\ItemObserver.cpp" />
+    <ClCompile Include="Logic\ItemLockedObserver.cpp" />
     <ClCompile Include="Logic\Observable.cpp" />
     <ClCompile Include="Logic\Observer.cpp" />
     <ClCompile Include="Logic\PlayerTakeItemCommand.cpp" />
@@ -138,12 +138,15 @@
     <ClCompile Include="Logic\TextCommand.cpp" />
     <ClCompile Include="Objects\Animation.cpp" />
     <ClCompile Include="Objects\DynamicObject.cpp" />
+    <ClCompile Include="Objects\Enemy.cpp" />
     <ClCompile Include="Objects\GameObject.cpp" />
+    <ClCompile Include="Objects\GlobalState.cpp" />
     <ClCompile Include="Objects\ID.cpp" />
     <ClCompile Include="Objects\Inventory.cpp" />
     <ClCompile Include="Objects\Item.cpp" />
     <ClCompile Include="Objects\Map.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Objects\Storage.cpp" />
     <ClCompile Include="Objects\Teleport.cpp" />
     <ClCompile Include="Objects\Zone.cpp" />
     <ClCompile Include="opengl.cpp" />
@@ -154,6 +157,7 @@
     <None Include="glut32.dll" />
     <None Include="Resources\Maps\lvl1_bigroom_1.map" />
     <None Include="Resources\Maps\lvl1_corridor_1.map" />
+    <None Include="Resources\Zones\lvl1.zone" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Opengl.vcxproj.xml" />
@@ -167,7 +171,7 @@
     <ClInclude Include="Logic\DialogCommand.h" />
     <ClInclude Include="Logic\EventProcessor.h" />
     <ClInclude Include="Logic\InteractCommand.h" />
-    <ClInclude Include="Logic\ItemObserver.h" />
+    <ClInclude Include="Logic\ItemLockedObserver.h" />
     <ClInclude Include="Logic\Observable.h" />
     <ClInclude Include="Logic\Observer.h" />
     <ClInclude Include="Logic\PlayerTakeItemCommand.h" />
@@ -177,12 +181,15 @@
     <ClInclude Include="Objects\Animation.h" />
     <ClInclude Include="Objects\Direction.h" />
     <ClInclude Include="Objects\DynamicObject.h" />
+    <ClInclude Include="Objects\Enemy.h" />
     <ClInclude Include="Objects\GameObject.h" />
+    <ClInclude Include="Objects\GlobalState.h" />
     <ClInclude Include="Objects\ID.h" />
     <ClInclude Include="Objects\Inventory.h" />
     <ClInclude Include="Objects\Item.h" />
     <ClInclude Include="Objects\Map.h" />
     <ClInclude Include="Objects\Player.h" />
+    <ClInclude Include="Objects\Storage.h" />
     <ClInclude Include="Objects\Teleport.h" />
     <ClInclude Include="Objects\Zone.h" />
   </ItemGroup>

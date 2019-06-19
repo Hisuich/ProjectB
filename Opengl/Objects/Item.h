@@ -7,8 +7,8 @@ class Item : public DynamicObject
 {
 public:
 
-	Item(long id, PointXYZ position);
-	Item(long id);
+	Item(long long id, PointXYZ position);
+	Item(long long id);
 	Item();
 };
 

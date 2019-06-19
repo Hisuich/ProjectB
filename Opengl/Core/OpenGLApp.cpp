@@ -2,6 +2,7 @@
 
 #include "../Objects/Player.h"
 #include "../Objects/Zone.h"
+#include "../Objects/GlobalState.h"
 
 OpenGLApp::OpenGLApp()
 {
@@ -14,30 +15,22 @@ OpenGLApp::~OpenGLApp()
 
 bool OpenGLApp::Init()
 {
+	//GlobalState::save();
+	//GlobalState::load();
 	eventProcessor = new EventProcessor();
 	Command::mainApp = this;
 	Observer::mainApp = this;
+	DynamicObject::mainApp = this;
 
 	player = new Player((PointXYZ(128, 192, 0)));
-	player->eventProcessor = this->eventProcessor;
 
-
-	Map* hallMap = new Map("hall");
-	Map* hallContMap = new Map("hallCont");
-	Map* lvl1_main_hall = new Map("lvl1_main_hall");
-	Map* lvl1_bigroom = new Map("lvl1_bigroom");
 	zone = new Zone("Main Hall", player);
-	hallMap->load("Resources/Maps/main_hall.map");
-	hallContMap->load("Resources/Maps/main_hall_cont.map");
-	lvl1_main_hall->load("Resources/Maps/lvl1_hall_1.map");
-	lvl1_bigroom->load("Resources/Maps/lvl1_bigroom_1.map");
-	zone->addMap(lvl1_bigroom); zone->addMap(hallMap); zone->addMap(hallContMap); zone->addMapTo(hallMap, hallContMap, RIGHT);
+	zone->load("Resources/Zones/lvl1.zone");
 	zone->activeMap = zone->maps.at(0).at(0);
 	currentMap = zone->activeMap;
-	
 	playerPosition = player->getPosition();
 	
-	//glDisable(GL_DEPTH_TEST);
+
 	return true;
 }
 
@@ -108,9 +101,23 @@ void OpenGLApp::Update(float dt)
 	{
 		for (int i = 1; i < currentMap->dynamicsObj.size(); i++)
 		{
-			cout << "interact " << currentMap->dynamicsObj.size();
-			if (player->onDynamicColision(currentMap->dynamicsObj.at(i)));
-					//currentMap->onInteraction(player, currentMap->dynamicsObj.at(i));
+			player->onDynamicColision(currentMap->dynamicsObj.at(i));
+			if (currentMap->dynamicsObj.at(i)->name == "enemy")
+			{
+				for (auto dyn : currentMap->dynamicsObj)
+				{
+					DynamicObject* object = currentMap->dynamicsObj.at(i);
+					object->onDynamicColision(dyn);
+					object->onStaticColision(currentMap->getTyle(PointXYZ(object->getPosition().x,
+						object->getPosition().y, 0)));
+					object->onStaticColision(currentMap->getTyle(PointXYZ(object->getPosition().x + 32 - 1,
+						object->getPosition().y, 0)));
+					object->onStaticColision(currentMap->getTyle(PointXYZ(object->getPosition().x,
+						object->getPosition().y + 32 - 1, 0)));
+					object->onStaticColision(currentMap->getTyle(PointXYZ(object->getPosition().x + 32 - 1,
+						object->getPosition().y + 32 - 1, 0)));
+				}
+			}
 		}
 	}
 	playerPosition = player->getPosition();

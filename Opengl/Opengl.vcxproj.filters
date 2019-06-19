@@ -42,9 +42,6 @@
     <ClCompile Include="Logic\InteractCommand.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Logic\ItemObserver.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Logic\Observable.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -93,6 +90,18 @@
     <ClCompile Include="Logic\PlayerTakeItemCommand.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Logic\ItemLockedObserver.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Storage.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Enemy.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\GlobalState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut.dll" />
@@ -100,6 +109,7 @@
     <None Include="glut32.dll" />
     <None Include="Resources\Maps\lvl1_bigroom_1.map" />
     <None Include="Resources\Maps\lvl1_corridor_1.map" />
+    <None Include="Resources\Zones\lvl1.zone" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Opengl.vcxproj.xml" />
@@ -127,9 +137,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Logic\InteractCommand.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Logic\ItemObserver.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Logic\Observable.h">
@@ -181,6 +188,18 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Logic\PlayerTakeItemCommand.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Logic\ItemLockedObserver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Storage.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Enemy.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\GlobalState.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

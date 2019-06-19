@@ -1,4 +1,13 @@
-﻿  Command.cpp
-f:\vs\opengl\opengl\logic\command.cpp(21): warning C4150: deletion of pointer to incomplete type 'DynamicObject'; no destructor called
-  f:\vs\opengl\opengl\logic\command.h(7): note: see declaration of 'DynamicObject'
-  Opengl.vcxproj -> F:\VS\Opengl\Release\Opengl.exe
+﻿  Map.cpp
+d:\vs\opengl\opengl\objects\id.h(11): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\vs\opengl\opengl\objects\id.h(12): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\vs\opengl\opengl\objects\id.h(13): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\vs\opengl\opengl\objects\map.cpp(41): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\vs\opengl\opengl\objects\map.cpp(42): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\vs\opengl\opengl\objects\map.cpp(119): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  2 of 1816 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Opengl.vcxproj -> D:\VS\Opengl\Release\Opengl.exe

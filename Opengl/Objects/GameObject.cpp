@@ -24,7 +24,7 @@ GameObject::GameObject(string spriteFilePath)
 	this->position = PointXYZ(0, 0, 0);
 }
 
-GameObject::GameObject(long id, PointXYZ position)
+GameObject::GameObject(long long id, PointXYZ position)
 {
 	this->id = id;
 	this->sprite = ID::getSprite(id);
@@ -34,20 +34,23 @@ GameObject::GameObject(long id, PointXYZ position)
 	else
 		this->Solid = ID::isMapTyleSolid(id);
 	this->interactable = ID::isTileInteractable(id);
+
+	ID::setObservers(this);
 }
 
-GameObject::GameObject(long id)
+GameObject::GameObject(long long id)
 	: GameObject::GameObject(id, PointXYZ(0,0,0))
 {
 }
 
 GameObject::GameObject()
 {
-	this->position = PointXYZ(0, 0, 0);
+	ID::setObservers(this);
 }
 
 GameObject::~GameObject()
 {
+
 }
 
 void GameObject::drawGameObject()
@@ -62,7 +65,7 @@ void GameObject::drawGameObject(PointXYZ position)
 	drawGameObject();
 }
 
-void GameObject::onInteraction(GameObject object)
+void GameObject::onInteraction(GameObject* object)
 {
 }
 

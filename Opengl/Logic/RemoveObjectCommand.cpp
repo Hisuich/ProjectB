@@ -15,7 +15,8 @@ RemoveObjectCommand::RemoveObjectCommand(PointXYZ position)
 
 void RemoveObjectCommand::Update(float dt)
 {
-	this->mainApp->currentMap->removeDynamicObjectByPosition(obj->getPosition());
+	if(this->obj != nullptr)
+		this->mainApp->currentMap->removeDynamicObjectByPosition(obj->getPosition());
 	isCompleted = true;
 }
 

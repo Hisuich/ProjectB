@@ -1,6 +1,7 @@
 #ifndef DYNAMIC_OBJECT
 #define DYNAMIC_OBJECT
 #include "GameObject.h"
+class OpenGLApp;
 
 class DynamicObject : public GameObject
 {
@@ -14,13 +15,15 @@ public:
 	float xVelocity = 0;
 	float yVelocity = 0;
 
+	static OpenGLApp* mainApp;
+
 public:
 
 	DynamicObject(string filePath, PointXYZ position);
 	DynamicObject(string filePath);
 
-	DynamicObject(long id, PointXYZ position);
-	DynamicObject(long id);
+	DynamicObject(long long id, PointXYZ position);
+	DynamicObject(long long id);
 
 	DynamicObject();
 

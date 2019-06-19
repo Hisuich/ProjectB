@@ -5,7 +5,6 @@
 InteractCommand::InteractCommand(DynamicObject* dynObject, Direction direction) : Command(dynObject)
 {
 	this->obj = dynObject;
-	
 	int tileSize = mainApp->currentMap->tyleSize;
 	interactableObject = mainApp->currentMap->getDynamicObjectByPosition(PointXYZ(
 		dynObject->getPosition().x + (direction == LEFT ? -tileSize : direction == RIGHT ? tileSize : 0),
@@ -18,6 +17,7 @@ InteractCommand::InteractCommand(DynamicObject* dynObject, Direction direction) 
 
 void InteractCommand::Update(float dt) 
 {
+	cout << " NAME: " << interactableObject->name << " ID: " << interactableObject->id;
 	if (interactableObject->interactable) {
 		((Player*)obj)->onStaticInteraction(interactableObject);
 		this->mainApp->currentMap->onInteraction(this->obj, interactableObject);

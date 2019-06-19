@@ -10,28 +10,39 @@
 class DynamicObject;
 #include "Item.h";
 #include "Teleport.h";
+#include "Storage.h";
+#include "Enemy.h"
 
 class ID {
 
 private:
 	static std::string ResourcesPath;
-	static std::map<long, BMP*> idMapTile;
-	static std::map<long, BMP*> idDynamicObjects;
-	static std::map<long, string> objectDescription;
+	static std::string ResourcesMapPath;
+	static std::map<long long, BMP*> idMapTile;
+	static std::map<long long, BMP*> idDynamicObjects;
+	static std::map<long long, string> objectDescription;
+	static std::map<long long, string> idMaps;
+	static std::map<long long, std::vector<Observer*>> observersById;
+	static std::map<long long, long long> storageItems;
 
 
 public:
 
-	static string getObjectDescription(long id);
-	static BMP* getSprite(long id);
-	static bool isMapTyleSolid(long id);
-	static int getTileType(long id);
-	static Direction getTileDirection(long id);
-	static bool isTileInteractable(long id);
-	static bool isDynamic(long id);
-	static int getTileLvl(long id);
-	static long setTileLvl(long id, int lvl);
-	static DynamicObject* getDynamicObject(long id);
+	static string getObjectDescription(long long id);
+	static BMP* getSprite(long long id);
+	static bool isMapTyleSolid(long long id);
+	static int getTileType(long long id);
+	static Direction getTileDirection(long long id);
+	static bool isTileInteractable(long long id);
+	static bool isDynamic(long long id);
+	static int getTileLvl(long long id);
+	static int getTileNumber(long long id);
+	static long long setTileLvl(long long id, int lvl);
+	static long long setTileType(long long id, long long type);
+	static DynamicObject* getDynamicObject(long long id);
+	static void setObservers(GameObject* object);
+	static Item* getStorageItem(long long id);
+	static string getMapPath(long long id);
 };
 
 #endif

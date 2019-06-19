@@ -23,7 +23,7 @@ public:
 	BMP* sprite;
 	PointXYZ position;
 
-	long id;
+	long long id;
 	const char* name = "";
 	bool interactable = false;
 	const char* description = "";
@@ -34,8 +34,8 @@ public:
 	GameObject(string spriteFilePath, PointXYZ position);
 	GameObject(string spriteFilePath);
 
-	GameObject(long id, PointXYZ position);
-	GameObject(long id);
+	GameObject(long long id, PointXYZ position);
+	GameObject(long long id);
 
 	GameObject();
 	~GameObject();
@@ -56,7 +56,7 @@ public:
 	virtual void update(float dt);
 	virtual void render();
 
-	void onInteraction(GameObject object);
+	virtual void onInteraction(GameObject* object);
 };
 
 #endif

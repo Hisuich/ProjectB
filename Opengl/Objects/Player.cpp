@@ -2,6 +2,7 @@
 
 #include "../Logic/RemoveObjectCommand.h"
 #include "../Logic/PlayerTakeItemCommand.h"
+#include "../Core/OpenGLApp.h"
 
 std::string pathToPlayer = "Resources/Player/";
 bool* Player::key = new bool[256];
@@ -31,7 +32,6 @@ Player::Player(PointXYZ position)
 	down->addSprite(pathToPlayer + "character_down_3.bmp");
 	this->currentAnimation = down;
 	inventory = new Inventory();
-	eventProcessor = nullptr;
 	this->name = "player";
 	solidVsDynamic = true;
 	solidVsStatic = true;
@@ -45,7 +45,7 @@ Player::Player()
 void Player::playerMovementControl(unsigned char key, int x, int y)
 {
 	
-	if(eventProcessor->userControl)
+	if(DynamicObject::mainApp->eventProcessor->userControl)
 	switch (key)
 	{
 	case 'a':
@@ -67,7 +67,7 @@ void Player::playerMovementControl(unsigned char key, int x, int y)
 	case 'e':
 		xVelocity = 0;
 		yVelocity = 0;
-		this->eventProcessor->AddCommand(new InteractCommand(this, direction));
+		DynamicObject::mainApp->eventProcessor->AddCommand(new InteractCommand(this, direction));
 		break;
 	case 'c':
 		this->showInventory = true;
@@ -76,6 +76,7 @@ void Player::playerMovementControl(unsigned char key, int x, int y)
 		break;
 	}
 	this->key[key] = true;
+	
 }
 
 void Player::onStaticColision(GameObject* object)
@@ -174,8 +175,6 @@ void Player::playerMovement(float dt)
 		position.x += xVelocity;
 		position.y += yVelocity;
 	}
-	
-	//this->setPosition(newPosition);
 }
 
 void Player::setAnimation()
@@ -207,22 +206,35 @@ void Player::runAnimation(float dt)
 
 void Player::onStaticInteraction(GameObject* object)
 {
-
 	if (object->name == "Item")
 	{
 		DialogCommand* dialog = new DialogCommand();
 		dialog->addResponse("take", new PlayerTakeItemCommand((Item*)object));
 		dialog->addResponse("not to do anything");
-		eventProcessor->AddCommand(dialog);
+		DynamicObject::mainApp->eventProcessor->AddCommand(dialog);
 		return;
 	}
 	else if (object->name == "Teleport")
 	{
 		return;
 	}
+	else if (object->name == "Storage")
+	{
+		if (!((Storage*)object)->isEmpty())
+		{
+		DialogCommand* dialog = new DialogCommand();
+		dialog->addResponse("take", new PlayerTakeItemCommand((Storage*)object));
+		dialog->addResponse("not to do anything");
+		DynamicObject::mainApp->eventProcessor->AddCommand(new TextCommand("Something lies here"));
+		DynamicObject::mainApp->eventProcessor->AddCommand(dialog);
+		}
+		else
+			DynamicObject::mainApp->eventProcessor->AddCommand(new TextCommand(ID::getObjectDescription(object->id)));
+		
+	}
 	else
 	{
-		eventProcessor->AddCommand(new TextCommand(ID::getObjectDescription(object->id)));
+		DynamicObject::mainApp->eventProcessor->AddCommand(new TextCommand(ID::getObjectDescription(object->id)));
 
 	}
 }
@@ -231,7 +243,7 @@ void Player::takeItem(Item * item)
 {
 	this->inventory->addItem(item);
 	this->inventory->getItems();
-	this->eventProcessor->AddCommand(new RemoveObjectCommand(item));
+	DynamicObject::mainApp->eventProcessor->AddCommand(new RemoveObjectCommand(item));
 }
 
 void Player::update(float dt)
@@ -250,9 +262,14 @@ void Player::render()
 
 bool Player::hasItem(Item * item)
 {
-	for (auto it : this->inventory->items) 
+	this->hasItem(item->id);
+}
+
+bool Player::hasItem(long long itemId)
+{
+	for (auto it : this->inventory->items)
 	{
-		if (it->id == item->id)
+		if (it->id == itemId)
 			return true;
 	}
 	return false;

@@ -1,5 +1,7 @@
 #include "DynamicObject.h"
 
+OpenGLApp* DynamicObject::mainApp = nullptr;
+
 DynamicObject::DynamicObject(string filePath, PointXYZ position)
 	: GameObject::GameObject(filePath, position)
 {
@@ -11,17 +13,18 @@ DynamicObject::DynamicObject(string filePath)
 {
 }
 
-DynamicObject::DynamicObject(long id, PointXYZ position)
+DynamicObject::DynamicObject(long long id, PointXYZ position)
 	: GameObject::GameObject(id, position)
 {
 }
 
-DynamicObject::DynamicObject(long id)
+DynamicObject::DynamicObject(long long id)
 	: DynamicObject::DynamicObject(id, PointXYZ(0, 0, 0))
 {
 }
 
 DynamicObject::DynamicObject()
+	: GameObject::GameObject()
 {
 }
 

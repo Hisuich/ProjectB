@@ -1,6 +1,6 @@
 #include "BMP.h"
 
-BMP::BMP(string filePath)
+BMP::BMP(std::string filePath)
 {
 	fstream image(filePath, ios::in | ios::binary);
 	if (!image.is_open()) { throw invalid_argument("Error: File is not opened"); }
@@ -16,7 +16,8 @@ BMP::BMP(string filePath)
 	bitsPerPixel = fileInfo[28] + (fileInfo[29] << 8);
 	width = fileInfo[18] + (fileInfo[19] << 8);
 	height = fileInfo[22] + (fileInfo[23] << 8);
-	cout << "width " << width << " " << "height " << height << endl;
+	cout << "name: " << filePath.c_str();
+	cout << " width " << width << " " << "height " << height << endl;
 	uint32_t pixelOffset = fileInfo[10] + (fileInfo[11] << 8);
 	uint32_t size = width * 4 * height;
 	pixels.resize(size);

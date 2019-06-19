@@ -4,7 +4,6 @@
 #include "DynamicObject.h"
 #include "../Logic/TextCommand.h"
 #include "../Logic/InteractCommand.h"
-#include "../Logic/EventProcessor.h"
 #include "../Logic/DialogCommand.h"
 #include "Animation.h"
 #include "Inventory.h"
@@ -20,7 +19,6 @@ public:
 	bool showInventory = false;
 
 	Inventory* inventory = nullptr;
-	EventProcessor* eventProcessor = nullptr;
 
 	Animation* left = nullptr;
 	Animation* right = nullptr;
@@ -44,6 +42,7 @@ public:
 	void render() override;
 
 	bool hasItem(Item* item);
+	bool hasItem(long long itemId);
 
 	void onStaticColision(GameObject* object) override;
 	void onStaticInteraction(GameObject* object) override;

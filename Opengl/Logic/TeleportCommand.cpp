@@ -11,6 +11,7 @@ TeleportCommand::TeleportCommand(DynamicObject* obj, Teleport* teleport)
 
 void TeleportCommand::Update(float dt)
 {
+
 	if (teleport->locked)
 	{
 		mainApp->eventProcessor->AddCommand(new TextCommand("Locked"));

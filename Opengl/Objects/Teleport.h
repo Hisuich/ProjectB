@@ -3,7 +3,7 @@
 
 #include "DynamicObject.h"
 #include "../Logic/TeleportCommand.h"
-#include "../Logic/ItemObserver.h"
+#include "../Logic/ItemLockedObserver.h"
 #include "Item.h"
 
 class Map;
@@ -14,12 +14,11 @@ public:
 	PointXYZ destinationPosition;
 	Map* destinationMap = nullptr;
 	bool locked = false;
-	ItemObserver* itemObs;
 
 public:
 	Teleport();
-	Teleport(PointXYZ currentPosition, PointXYZ destinationPosition, Map* destinationMap, bool locked);
-	Teleport(PointXYZ currentPosition, PointXYZ destinationPosition, Map* destinationMap);
+	Teleport(long long id, PointXYZ currentPosition, PointXYZ destinationPosition, Map* destinationMap, bool locked);
+	Teleport(long long id, PointXYZ currentPosition, PointXYZ destinationPosition, Map* destinationMap);
 
 
 	void update(float dt) override;
